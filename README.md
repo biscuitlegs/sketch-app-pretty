@@ -1,5 +1,7 @@
 # Sketch App Pretty
 
+## [Try it out!](https://biscuitlegs.github.io/sketch-app-pretty/)
+
 ## About
 * Sketching app made with HTML CSS and JavaScript.
 * Allows you to create simple pixelated drawings in your browser.
