@@ -1,21 +1,11 @@
-const tileGrid = document.querySelector('.tile-grid');
-const gridSizeInput = document.querySelector('.grid-size-input');
-const gridSizeDisplay = document.querySelector('.grid-size-display');
-const gridSizeButton = document.querySelector('.grid-size-button');
-
-initializeGrid(tileGrid, 256);
-initializeControls();
-gridSizeButton.addEventListener('click', updateGrid);
-
-
 function updateGrid() {
-    initializeGrid(tileGrid, gridSizeInput.value ** 2);
+    initializeGrid(gridSizeInput.value ** 2);
     tileGrid.style.gridTemplateColumns = `repeat(${gridSizeInput.value}, 1fr)`;
     tileGrid.style.gridTemplateRows = `repeat(${gridSizeInput.value}, 1fr)`;
 }
 
-function initializeGrid(grid, tileCount) {
-    grid.innerHTML = '';
+function initializeGrid(tileCount) {
+    tileGrid.innerHTML = '';
     fillContainerWithTiles(tileCount);
     makeTilesFillable();
 }
@@ -31,7 +21,7 @@ function fillContainerWithTiles(tileCount) {
 function makeTilesFillable() {
     const tiles = document.querySelectorAll('.tile');
     tiles.forEach(tile => tile.addEventListener('mouseover', () => {
-        tile.style.backgroundColor = '#b8b8b8';
+        tile.classList.add('filled');
     }));
 }
 
@@ -41,3 +31,19 @@ function initializeControls() {
         gridSizeDisplay.textContent = `${gridSizeInput.value} x ${gridSizeInput.value}`;
     });
 }
+
+function clearGrid() {
+    const tiles = document.querySelectorAll('.tile');
+    tiles.forEach(tile => tile.classList.remove('filled'));
+}
+
+const tileGrid = document.querySelector('.tile-grid');
+const gridSizeInput = document.querySelector('.grid-size-input');
+const gridSizeDisplay = document.querySelector('.grid-size-display');
+const gridSizeButton = document.querySelector('.grid-size-button');
+const gridClearButton = document.querySelector('.grid-clear-button');
+
+initializeGrid(256);
+initializeControls();
+gridSizeButton.addEventListener('click', updateGrid);
+gridClearButton.addEventListener('click', clearGrid);
