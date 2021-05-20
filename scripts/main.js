@@ -20,8 +20,18 @@ function fillContainerWithTiles(tileCount) {
 
 function makeTilesFillable() {
     const tiles = document.querySelectorAll('.tile');
+    tiles.forEach(tile => tile.addEventListener('mousedown', () => {
+        if (!isDrawing) {
+            tile.classList.add('filled');
+            isDrawing = true;
+        }
+    }));
     tiles.forEach(tile => tile.addEventListener('mouseover', () => {
-        tile.classList.add('filled');
+        if (isDrawing) tile.classList.add('filled');
+    }));
+    tiles.forEach(tile => tile.addEventListener('mouseup', () => {
+        if (isDrawing) tile.classList.add('filled');
+        isDrawing = false;
     }));
 }
 
@@ -42,6 +52,7 @@ const gridSizeInput = document.querySelector('.grid-size-input');
 const gridSizeDisplay = document.querySelector('.grid-size-display');
 const gridSizeButton = document.querySelector('.grid-size-button');
 const gridClearButton = document.querySelector('.grid-clear-button');
+let isDrawing = false;
 
 initializeGrid(256);
 initializeControls();
