@@ -1,4 +1,4 @@
-.tiles-container {
+.tile-grid {
     width: 500px;
     height: 500px;
     margin: 0 auto;
@@ -11,4 +11,15 @@
 .tile {
     height: 100%;
     width: 100%;
+}
+
+.grid-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-controls-title {
+    text-align: center;
+    margin: 10px;
 }
