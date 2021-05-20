@@ -30,3 +30,7 @@ main {
 .filled {
     background: #b8b8b8;
 }
+
+.grid-size-display {
+    width: 80px;
+}
